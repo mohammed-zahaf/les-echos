@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User, UserDocument } from './schemas/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { User, UserDocument } from './schemas/user.schema';
 
 @Injectable()
 export class UserService {
@@ -21,7 +21,7 @@ export class UserService {
   }
 
   async getByPseudonym(pseudonym: string): Promise<User> {
-    const user = await this.userModel.findOne({ pseudonym }).exec();
+    const user = await this.userModel.findOne({ pseudonym }).lean().exec();
     if (!user) {
       throw new NotFoundException(`User with pseudonym ${pseudonym} not found`);
     }

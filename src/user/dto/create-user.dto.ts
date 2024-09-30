@@ -9,5 +9,5 @@ export class CreateUserDto {
     country?: string;
   };
   readonly comment?: string;
-  readonly userType: 'admin' | 'user';
+  readonly role: 'admin' | 'user';
 }

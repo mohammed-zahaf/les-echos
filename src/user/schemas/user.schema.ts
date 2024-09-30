@@ -37,7 +37,7 @@ export class User {
   comment: string;
 
   @Prop({ required: true, enum: ['admin', 'user'] })
-  userType: string;
+  role: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
