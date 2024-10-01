@@ -1,0 +1,33 @@
+version: '3'
+services:
+  user-management-api:
+    build: .
+    container_name: les-echos-nest-app
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./docker.config.env
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image: mongo:6.0.17
+    container_name: les-echos-mongo-db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    image: redis:alpine
+    container_name: les-echos-redis-datastore
+    restart: always
+    ports:
+      - "6379:6379"
+
+volumes:
+  mongo-data:
+    driver: local
