@@ -1,0 +1,45 @@
+###
+
+# curl -X POST http://localhost:3000/users
+#-H "Content-Type: application/json"
+#-d '{
+#  "pseudonym": "john_doe",
+#  "password": "SecurePa$$w0rd",
+#  "name": "John Doe",
+#  "address": {
+#    "street": "123 Main St",
+#    "city": "Anytown",
+#    "zipCode": "12345",
+#    "country": "Country"
+#  },
+#  "comment": "This is a test user.",
+#  "userType": "user"
+#}'
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "pseudonym": "user_1",
+  "password": "ACz9X8H0pa5Kk66",
+  "name": "User USER1",
+  "address": {
+    "street": "1, rue de la paix",
+    "city": "Paris",
+    "zipCode": "75001",
+    "country": "France"
+  },
+  "comment": ": Ceci est mon commentaire :",
+  "role": "user"
+}
+
+<> 2024-10-01T202342.500.json
+<> 2024-10-01T202325.201.json
+<> 2024-10-01T202312.201.json
+<> 2024-10-01T202300.201.json
+<> 2024-10-01T191358.201.json
+<> 2024-10-01T191354.201.json
+<> 2024-10-01T191350.201.json
+<> 2024-10-01T170609.201.json
+
+###
+

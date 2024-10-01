@@ -1,0 +1,22 @@
+# curl -X POST http://localhost:3000/users/login
+#-H "Content-Type: application/json"
+#-d '{
+#  "pseudonym": "john_doe",
+#  "password": "SecurePa$$w0rd"
+#}'
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "pseudonym": "user_1",
+  "password": "ACz9X8H0pa5Kk66"
+}
+
+<> 2024-10-01T172830.201.json
+<> 2024-10-01T171356.201.json
+<> 2024-10-01T155526.201.json
+<> 2024-10-01T155519.201.json
+<> 2024-10-01T132733.201.json
+
+###
+

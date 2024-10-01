@@ -1,0 +1,13 @@
+# curl -X POST http://localhost:3000/auth/logout
+#-H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+#-d '{}'
+POST http://localhost:3000/auth/logout
+Authorization: Bearer <eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG9ueW0iOiJtemFoYWYiLCJzdWIiOiJtemFoYWYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjc3ODIwNTMsImV4cCI6MTcyNzc4NTY1M30.e9-IBUr0uRZEYWTbBSzM6cwGnz6jsHRgzfQlsLHjWRo>
+Content-Type: application/json
+
+{}
+
+<> 2024-10-01T132800.200.json
+
+###
+

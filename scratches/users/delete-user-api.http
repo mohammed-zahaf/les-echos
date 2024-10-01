@@ -1,0 +1,27 @@
+###
+
+# curl -X DELETE http://localhost:3000/users/john_doe
+#-H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+#-H "Content-Type: application/json"
+#}'
+DELETE http://localhost:3000/users/user_1
+Content-Type: application/json
+Authorization: Bearer <eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG9ueW0iOiJtemFoYWYiLCJzdWIiOiJtemFoYWYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjc3OTY1MDAsImV4cCI6MTcyNzgwMDEwMH0.ma4q-ebKr7jfyEtXusIa1Rr9Io_2opomrPURjPuYgtY>
+
+
+<> 2024-10-01T180451.200.json
+<> 2024-10-01T180422.403.json
+<> 2024-10-01T174054.403.json
+<> 2024-10-01T173954.200.json
+<> 2024-10-01T161314.401.json
+<> 2024-10-01T161152.401.json
+<> 2024-10-01T161129.401.json
+<> 2024-10-01T161038.401.json
+<> 2024-10-01T160956.401.json
+<> 2024-10-01T160859.500.json
+<> 2024-10-01T155858.401.json
+<> 2024-10-01T155803.500.json
+<> 2024-10-01T155714.500.json
+
+###
+
