@@ -18,11 +18,11 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
       console.error('Redis Client Error', err),
     );
 
-    await this.redisClient.connect(); // Connexion au client Redis
+    await this.redisClient.connect();
   }
 
   async onModuleDestroy() {
-    await this.redisClient.quit(); // Déconnexion lors de la destruction du module
+    await this.redisClient.quit();
   }
 
   /**

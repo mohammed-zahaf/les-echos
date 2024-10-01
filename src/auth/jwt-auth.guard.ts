@@ -1,11 +1,3 @@
-/*
-import { Injectable } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-
-@Injectable()
-export class JwtAuthGuard extends AuthGuard('jwt') {}
-*/
-
 import {
   ExecutionContext,
   Injectable,
@@ -16,14 +8,14 @@ import { RedisService } from './redis.service';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
-  constructor(private redisService: RedisService) {
+  constructor(private readonly redisService: RedisService) {
     super();
   }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const request = context.switchToHttp().getRequest();
-    const [bearer, token]: [string, string] =
-      request.headers.authorization?.split(' ');
+    const { headers } = context.switchToHttp().getRequest();
+    const { authorization } = headers;
+    const [bearer, token]: [string, string] = (authorization || '')?.split(' ');
 
     if (!bearer.includes('Bearer') || !token) {
       throw new UnauthorizedException("token can't be processed");
