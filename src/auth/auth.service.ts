@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
-import { UserDocument } from '../user/schemas/user.schema';
+import { User, UserDocument } from '../user/schemas/user.schema';
 import { UserService } from '../user/user.service';
 import { RedisService } from './redis.service';
 
@@ -13,11 +13,8 @@ export class AuthService {
 
   async verify(pseudonyme: string, pass: string): Promise<any> {
     const user = await this.userService.getByPseudonym(pseudonyme);
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
+    const isValidPassword = await bcrypt.compare(pass, user?.password);
 
-    const isValidPassword = await bcrypt.compare(pass, user.password);
     if (isValidPassword) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = user;
@@ -28,20 +25,18 @@ export class AuthService {
     return null;
   }
 
-  async login(user: UserDocument) {
-    console.log('ZM:: login.psuedo', user.pseudonym);
+  async login(user: User) {
     const payload = {
-      pseudonyme: user.pseudonym,
+      pseudonym: user.pseudonym,
       sub: user.pseudonym,
       role: user.role,
     };
-    console.log('ZM:: sign', await this.redisService.sign(payload));
     return {
       access_token: await this.redisService.sign(payload),
     };
   }
 
   async logout(token: string) {
-    return this.redisService.revokeToken(token);
+    return this.redisService.revoke(token);
   }
 }

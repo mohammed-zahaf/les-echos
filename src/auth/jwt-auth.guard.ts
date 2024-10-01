@@ -6,7 +6,11 @@ import { AuthGuard } from '@nestjs/passport';
 export class JwtAuthGuard extends AuthGuard('jwt') {}
 */
 
-import { ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ExecutionContext,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { RedisService } from './redis.service';
 
@@ -18,19 +22,18 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
-    const token = request.headers.authorization?.split(' ')[1];
+    const [bearer, token]: [string, string] =
+      request.headers.authorization?.split(' ');
 
-    if (!token) {
-      throw new UnauthorizedException('Token manquant');
+    if (!bearer.includes('Bearer') || !token) {
+      throw new UnauthorizedException("token can't be processed");
     }
 
     try {
-      await this.redisService.validateToken(token);
+      await this.redisService.verify(token.replace(/[<>]/g, ''));
       return true;
     } catch (error) {
-      throw new UnauthorizedException(
-        `Token invalide ou expiré :: ${error.message}`,
-      );
+      throw new UnauthorizedException(error.message);
     }
   }
 }

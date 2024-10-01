@@ -20,7 +20,7 @@ export class AuthController {
   async login(@Body() body) {
     const { pseudonym, password } = body;
     const user = await this.authService.verify(pseudonym, password);
-    console.log('ZM:: user', user);
+
     if (!user) {
       throw new UnauthorizedException('Invalid pseudonym or password');
     }
@@ -31,9 +31,9 @@ export class AuthController {
   @Post('logout')
   @UseGuards(JwtAuthGuard)
   async logout(@Req() req: Request, @Res() res: Response) {
-    const token = req.headers.get('authorization').split(' ')[1];
+    const token = req.headers['authorization'].split(' ')[1];
 
-    await this.authService.logout(token);
-    res.status(HttpStatus.OK).json({ message: 'Déconnexion réussie' });
+    const data = await this.authService.logout(token.replace(/[<>]/g, ''));
+    res.status(HttpStatus.OK).json(data);
   }
 }
