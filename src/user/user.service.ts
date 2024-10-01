@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
+import { GetUsersDto } from './dto/get-users.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserDocument } from './schemas/user.schema';
 
@@ -19,6 +20,30 @@ export class UserService {
     const user = await this.userModel.findOne({ pseudonym }).exec();
 
     return !!user;
+  }
+
+  /**
+   * Retrieves a list of users based on provided query parameters.
+   *
+   * @param {GetUsersDto} query - The query object containing filters and sorting options.
+   * @return {Promise<Array>} A promise that resolves to an array of user objects.
+   */
+  async getUsers(query: GetUsersDto): Promise<Array<User>> {
+    const filter: any = {};
+
+    if (query.pseudonym) filter.pseudonym = query.pseudonym;
+    if (query.name) filter.name = query.name;
+    if (query.city) filter['address.city'] = query.city;
+    if (query.zipCode) filter['address.zipCode'] = query.zipCode;
+    if (query.country) filter['address.country'] = query.country;
+    if (query.role) filter.role = query.role;
+
+    const sort = {};
+    if (query.sortBy) {
+      sort[query.sortBy] = query.sortOrder === 'desc' ? -1 : 1;
+    }
+
+    return this.userModel.find(filter).sort(sort).exec();
   }
 
   /**

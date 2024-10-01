@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   Req,
   UseGuards,
 } from '@nestjs/common';
@@ -16,6 +17,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Roles } from '../auth/roles/roles.decorator';
 import { RolesGuard } from '../auth/roles/roles.guard';
 import { CreateUserDto } from './dto/create-user.dto';
+import { GetUsersDto } from './dto/get-users.dto';
 import { User } from './schemas/user.schema';
 import { UserService } from './user.service';
 
@@ -30,6 +32,13 @@ export class UserController {
   @Get(':pseudonym')
   findOne(@Param('pseudonym') pseudonym: string) {
     return this.userService.getByPseudonym(pseudonym);
+  }
+
+  @Get()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(['admin'])
+  async getUsers(@Query() query: GetUsersDto): Promise<User[]> {
+    return this.userService.getUsers(query);
   }
 
   /**
