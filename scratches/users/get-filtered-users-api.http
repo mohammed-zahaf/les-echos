@@ -1,0 +1,14 @@
+# curl -X GET "http://localhost:3000/users?role=user&sortBy=name&sortOrder=desc" -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+GET http://localhost:3000/users?role=user&sortBy=name&sortOrder=desc
+Authorization: Bearer <eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG9ueW0iOiJtemFoYWYiLCJzdWIiOiJtemFoYWYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjc4MDI1OTksImV4cCI6MTcyNzgwNjE5OX0.m79KXIrthOlzO1XkWYK3JikwgWSdflydZIqBVJc9VdY>
+
+<> 2024-10-01T193616.200.json
+<> 2024-10-01T193552.200.json
+<> 2024-10-01T193447.200.json
+<> 2024-10-01T193401.200.json
+<> 2024-10-01T193038.200.json
+<> 2024-10-01T192735.200.json
+<> 2024-10-01T191804.200.json
+
+###
+

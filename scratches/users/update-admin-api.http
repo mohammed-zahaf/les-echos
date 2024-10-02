@@ -1,0 +1,43 @@
+###
+
+# curl -X PUT http://localhost:3000/users/john_doe
+#-H "Content-Type: application/json"
+#-d '{
+#  "name": "John Updated",
+#  "address": {
+#    "street": "456 Updated St",
+#    "city": "New City",
+#    "zipCode": "67890",
+#    "country": "Updated Country"
+#  },
+#  "comment": "This is an updated test user."
+#}'
+PUT http://localhost:3000/users/user_1
+Content-Type: application/json
+Authorization: Bearer <eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG9ueW0iOiJ1c2VyXzEiLCJzdWIiOiJ1c2VyXzEiLCJyb2xlIjoidXNlciIsImlhdCI6MTcyNzc5NjUxMCwiZXhwIjoxNzI3ODAwMTEwfQ.ve23fo_Y0Trq2i-Qbb3F-QDkgvAVrHBOEpphDtcoOHU>
+
+{
+  "name": "User1 USER_1",
+  "address": {
+    "street": "456 Updated St",
+    "city": "New City",
+    "zipCode": "67890",
+    "country": "Suisse"
+  },
+  "comment": ":: This is an updated test user ::"
+}
+
+<> 2024-10-01T174054.403.json
+<> 2024-10-01T173954.200.json
+<> 2024-10-01T161314.401.json
+<> 2024-10-01T161152.401.json
+<> 2024-10-01T161129.401.json
+<> 2024-10-01T161038.401.json
+<> 2024-10-01T160956.401.json
+<> 2024-10-01T160859.500.json
+<> 2024-10-01T155858.401.json
+<> 2024-10-01T155803.500.json
+<> 2024-10-01T155714.500.json
+
+###
+

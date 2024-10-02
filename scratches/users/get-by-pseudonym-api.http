@@ -1,0 +1,10 @@
+###
+
+# curl -X GET http://localhost:3000/users/john_doe
+GET http://localhost:3000/users/mzahaf
+
+###
+
+# curl -X GET http://localhost:3000/users/john_doe
+GET http://localhost:3000/users/user_1
+
